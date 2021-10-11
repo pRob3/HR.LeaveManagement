@@ -31,7 +31,7 @@ namespace HR.LeaveManagement.Api.Controllers
             return Ok(leaveRequests);
         }
 
-        // GET api/<LeaveRequestsController>/5
+        // GET api/<LeaveRequestsController>/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<LeaveRequestDto>> Get(int id)
         {
