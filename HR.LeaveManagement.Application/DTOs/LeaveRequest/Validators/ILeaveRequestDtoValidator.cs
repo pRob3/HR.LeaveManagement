@@ -10,9 +10,9 @@ namespace HR.LeaveManagement.Application.DTOs.LeaveRequest.Validators
 {
     public class ILeaveRequestDtoValidator : AbstractValidator<ILeaveRequestDto>
     {
-        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        private readonly ILeaveRequestRepository _leaveTypeRepository;
 
-        public ILeaveRequestDtoValidator(ILeaveTypeRepository leaveTypeRepository)
+        public ILeaveRequestDtoValidator(ILeaveRequestRepository leaveTypeRepository)
         {
             _leaveTypeRepository = leaveTypeRepository;
             RuleFor(p => p.StartDate)

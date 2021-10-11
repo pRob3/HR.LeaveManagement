@@ -10,9 +10,9 @@ namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators
 {
     public class UpdateLeaveAllocationDtoValidator : AbstractValidator<UpdateLeaveAllocationDto>
     {
-        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        private readonly ILeaveRequestRepository _leaveTypeRepository;
 
-        public UpdateLeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository)
+        public UpdateLeaveAllocationDtoValidator(ILeaveRequestRepository leaveTypeRepository)
         {
             _leaveTypeRepository = leaveTypeRepository;
             Include(new ILeaveAllocationDtoValidator(_leaveTypeRepository));
