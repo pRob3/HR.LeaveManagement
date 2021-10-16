@@ -14,10 +14,12 @@ namespace HR.LeaveManagement.MVC.Controllers
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeService _leaveTypeService;
+        private readonly ILeaveAllocationService _leaveAllocationService;
 
-        public LeaveTypesController(ILeaveTypeService leaveTypeService)
+        public LeaveTypesController(ILeaveTypeService leaveTypeService, ILeaveAllocationService leaveAllocationService)
         {
             _leaveTypeService = leaveTypeService;
+            this._leaveAllocationService = leaveAllocationService;
         }
 
         // GET: LeaveTypesController
@@ -110,6 +112,26 @@ namespace HR.LeaveManagement.MVC.Controllers
             {
                 ModelState.AddModelError("", ex.Message);
             }
+            return BadRequest();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Allocate(int id)
+        {
+            try
+            {
+                var response = await _leaveAllocationService.CreateLeaveAllocations(id);
+                if (response.Success)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+
             return BadRequest();
         }
     }

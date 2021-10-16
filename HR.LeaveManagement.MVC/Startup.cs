@@ -36,10 +36,10 @@ namespace HR.LeaveManagement.MVC
             services.AddTransient<IAuthenticationService, AuthenticationService>();
 
             services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44384"));
-
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped<ILeaveTypeService, LeaveTypeService>();
+            services.AddScoped<ILeaveAllocationService, LeaveAllocationService>();
 
             services.AddSingleton<ILocalStorageService, LocalStorageService>();
 
